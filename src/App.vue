@@ -1,85 +1,37 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ShoppingCartIcon, UserIcon } from '@heroicons/vue/24/outline'
+import FooterBox from '@/components/FooterBox.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+	<header class="flex justify-between items-center">
+		<nav class="flex justify-between items-center">
+			<RouterLink to="/shop">
+				<img
+					alt="Vue logo"
+					class="logo"
+					src="@/assets/logo.svg"
+					width="40"
+					height="40"
+				/>
+			</RouterLink>
+			<RouterLink to="/shop">Shop</RouterLink>
+			<RouterLink to="/community">Community</RouterLink>
+			<RouterLink to="/about">About</RouterLink>
+		</nav>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+		<div class="flex">
+			<RouterLink to="/user"><UserIcon class="w-6 h-6" /></RouterLink>
+			<RouterLink to="/cart"
+				><ShoppingCartIcon class="w-6 h-6"
+			/></RouterLink>
+		</div>
+	</header>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+	<main class="py-12">
+		<RouterView />
+	</main>
 
-  <RouterView />
+	<FooterBox />
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
