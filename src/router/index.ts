@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ShopView from '@/views/ShopView.vue'
+import ShopItemView from '@/views/ShopItemView.vue'
 import AboutView from '@/views/AboutView.vue'
 import UserView from '@/views/UserView.vue'
 import CartView from '@/views/CartView.vue'
@@ -17,6 +18,12 @@ const router = createRouter({
 			path: '/shop',
 			name: 'shop',
 			component: ShopView,
+		},
+		{
+			path: '/shop/:id',
+			name: 'detail',
+			props: true,
+			component: ShopItemView,
 		},
 		{
 			path: '/community',

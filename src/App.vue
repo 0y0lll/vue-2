@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import { ShoppingCartIcon, UserIcon } from '@heroicons/vue/24/outline'
-import FooterBox from '@/components/FooterBox.vue'
-</script>
-
 <template>
 	<header class="flex justify-between items-center">
 		<nav class="flex justify-between items-center">
@@ -23,8 +17,16 @@ import FooterBox from '@/components/FooterBox.vue'
 
 		<div class="flex">
 			<RouterLink to="/user"><UserIcon class="w-6 h-6" /></RouterLink>
-			<RouterLink to="/cart"
-				><ShoppingCartIcon class="w-6 h-6"
+			<RouterLink to="/cart" class="relative">
+				<div
+					class="flex justify-center items-center rounded-full absolute bg-red-600"
+					style="right: -5px; bottom: -3px; width: 16px; height: 16px"
+				>
+					<span style="font-size: 10px; color: #fff">{{
+						cartList.length
+					}}</span>
+				</div>
+				<ShoppingCartIcon class="w-6 h-6"
 			/></RouterLink>
 		</div>
 	</header>
@@ -35,3 +37,15 @@ import FooterBox from '@/components/FooterBox.vue'
 
 	<FooterBox />
 </template>
+
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import { ShoppingCartIcon, UserIcon } from '@heroicons/vue/24/outline'
+import FooterBox from '@/components/FooterBox.vue'
+
+import { useShopStore } from '@/stores/shop'
+import { storeToRefs } from 'pinia'
+
+const store = useShopStore()
+const { cartList } = storeToRefs(store)
+</script>
